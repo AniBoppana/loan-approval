@@ -17,3 +17,14 @@ FROM
     cali_2022
 GROUP BY county_code
 ORDER BY average_loan_amount DESC;
+
+-- 3. Interest rate distribution by action taken on loan application
+SELECT 
+    action_taken,
+    MIN(interest_rate) AS min_interest_rate,
+    MAX(interest_rate) AS max_interest_rate,
+    AVG(interest_rate) AS average_interest_rate
+FROM
+    cali_2022
+GROUP BY action_taken
+ORDER BY average_interest_rate;
