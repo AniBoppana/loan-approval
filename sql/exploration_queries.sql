@@ -28,3 +28,13 @@ FROM
     cali_2022
 GROUP BY action_taken
 ORDER BY average_interest_rate;
+
+-- 4. Number of applications and average property value by age group
+SELECT 
+	applicant_age,
+    COUNT(*) AS number_of_applications,
+    CAST(AVG(property_value) as decimal(10,0)) AS avg_property_value
+FROM
+    loan_approval.cali_2022
+GROUP BY applicant_age
+ORDER BY number_of_applications DESC;
