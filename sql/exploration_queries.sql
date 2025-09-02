@@ -9,3 +9,11 @@ SELECT
 FROM
     cali_2022
 GROUP BY applicant_ethnicity_1;
+
+-- 2. Average loan approval by county code
+SELECT 
+    CAST(AVG(loan_amount) as decimal(10,2)) AS average_loan_amount, county_code
+FROM
+    cali_2022
+GROUP BY county_code
+ORDER BY average_loan_amount DESC;
