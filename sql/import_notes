@@ -1,1 +1,18 @@
+Dataset: HMDA 2022 (California subset)
+--> Filtered with loan_type: Conventional, FHA, VA & loan_purpose: Home purchase, refinancing
+Format: CSV (~320 MB)
+Link: https://ffiec.cfpb.gov/data-browser/data/2022?category=states&items=CA&loan_types=1,2,3&loan_purposes=1,2
+
+Import Method: MySQL (direct import with LOAD DATA LOCAL INFILE)
+Reason: MySQL Workbench Table Import Wizard was too slow for ~800k rows, estimated 2 hour upload time
+Steps:
+1. Created table with predefined schema
+2. Used command:
+  LOAD DATA LOCAL INFILE '/path/to/hmda_ca_2022.csv'
+  INTO TABLE cali_2022
+  FIELDS TERMINATED BY ',' 
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+3. Verified quality of import and accuracy of pre-filtering (loan_type & loan_purpose)
 
