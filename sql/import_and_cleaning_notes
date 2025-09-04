@@ -119,3 +119,47 @@ Steps:
   (8, 'Other credit scoring model'),
   (9, 'Not applicable'),
   (1111, 'Exempt');
+
+5. Created columns in cali_2022 and used the following joins
+
+  ALTER TABLE cali_2022
+      ADD COLUMN loan_type_name VARCHAR(100),
+      ADD COLUMN loan_purpose_name VARCHAR(100),
+      ADD COLUMN action_name VARCHAR(100),
+      ADD COLUMN occupancy_name VARCHAR(100),
+      ADD COLUMN construction_name VARCHAR(100),
+      ADD COLUMN purchaser_name VARCHAR(100),
+      ADD COLUMN preapproval_name VARCHAR(100),
+      ADD COLUMN credit_score_name VARCHAR(100);
+  
+  UPDATE cali_2022 c
+  JOIN loan_type_lookup l ON c.loan_type = l.loan_type
+  SET c.loan_type_name = l.loan_type_name;
+  
+  UPDATE cali_2022 c
+  JOIN loan_purpose_lookup p ON c.loan_purpose = p.loan_purpose
+  SET c.loan_purpose_name = p.loan_purpose_name;
+  
+  UPDATE cali_2022 c
+  JOIN action_taken_lookup a ON c.action_taken = a.action_taken
+  SET c.action_name = a.action_name;
+  
+  UPDATE cali_2022 c
+  JOIN occupancy_type_lookup o ON c.occupancy_type = o.occupancy_type
+  SET c.occupancy_name = o.occupancy_name;
+  
+  UPDATE cali_2022 c
+  JOIN construction_method_lookup m ON c.construction_method = m.construction_method
+  SET c.construction_name = m.construction_name;
+  
+  UPDATE cali_2022 c
+  JOIN purchaser_type_lookup pt ON c.purchaser_type = pt.purchaser_type
+  SET c.purchaser_name = pt.purchaser_name;
+  
+  UPDATE cali_2022 c
+  JOIN preapproval_lookup pr ON c.preapproval = pr.preapproval
+  SET c.preapproval_name = pr.preapproval_name;
+  
+  UPDATE cali_2022 c
+  JOIN credit_score_type_lookup cs ON c.applicant_credit_score_type = cs.applicant_credit_score_type
+  SET c.credit_score_name = cs.credit_score_name;
