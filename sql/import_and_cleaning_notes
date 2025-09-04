@@ -1,0 +1,121 @@
+Dataset: HMDA 2022 (California subset)
+--> Filtered with loan_type: Conventional, FHA, VA & loan_purpose: Home purchase, refinancing
+Format: CSV (~320 MB)
+Link: https://ffiec.cfpb.gov/data-browser/data/2022?category=states&items=CA&loan_types=1,2,3&loan_purposes=1,2
+
+Import Method: MySQL (direct import with LOAD DATA LOCAL INFILE)
+Reason: MySQL Workbench Table Import Wizard was too slow for ~800k rows, estimated 2 hour upload time
+Steps:
+1. Created table with predefined schema
+2. Used command:
+  LOAD DATA LOCAL INFILE '/path/to/hmda_ca_2022.csv'
+  INTO TABLE cali_2022
+  FIELDS TERMINATED BY ',' 
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+3. Verified quality of import and accuracy of pre-filtering (loan_type & loan_purpose)
+
+4. Mapped numerical values to appropriate text for readability with the following create and insert code
+
+  CREATE TABLE loan_type_lookup (
+      loan_type INT PRIMARY KEY,
+      loan_type_name VARCHAR(100)
+  );
+  
+  INSERT INTO loan_type_lookup VALUES
+  (1, 'Conventional'),
+  (2, 'FHA-insured'),
+  (3, 'VA-guaranteed'),
+  (4, 'RHS/FSA-guaranteed');
+  
+  CREATE TABLE loan_purpose_lookup (
+      loan_purpose INT PRIMARY KEY,
+      loan_purpose_name VARCHAR(100)
+  );
+  
+  INSERT INTO loan_purpose_lookup VALUES
+  (1, 'Home purchase'),
+  (2, 'Home improvement'),
+  (31, 'Refinancing'),
+  (32, 'Cash-out refinancing'),
+  (4, 'Other purpose'),
+  (5, 'Not applicable');
+  
+  CREATE TABLE action_taken_lookup (
+      action_taken INT PRIMARY KEY,
+      action_name VARCHAR(100)
+  );
+  
+  INSERT INTO action_taken_lookup VALUES
+  (1, 'Loan originated'),
+  (2, 'Application approved but not accepted'),
+  (3, 'Application denied'),
+  (4, 'Application withdrawn by applicant'),
+  (5, 'File closed for incompleteness'),
+  (6, 'Purchased loan'),
+  (7, 'Preapproval request denied'),
+  (8, 'Preapproval request approved but not accepted');
+  
+  CREATE TABLE occupancy_type_lookup (
+      occupancy_type INT PRIMARY KEY,
+      occupancy_name VARCHAR(100)
+  );
+  
+  INSERT INTO occupancy_type_lookup VALUES
+  (1, 'Principal residence'),
+  (2, 'Second residence'),
+  (3, 'Investment property');
+  
+  CREATE TABLE construction_method_lookup (
+      construction_method INT PRIMARY KEY,
+      construction_name VARCHAR(100)
+  );
+  
+  INSERT INTO construction_method_lookup VALUES
+  (1, 'Site-built'),
+  (2, 'Manufactured home');
+  
+  CREATE TABLE purchaser_type_lookup (
+      purchaser_type INT PRIMARY KEY,
+      purchaser_name VARCHAR(100)
+  );
+  
+  INSERT INTO purchaser_type_lookup VALUES
+  (0, 'Not applicable'),
+  (1, 'Fannie Mae'),
+  (2, 'Ginnie Mae'),
+  (3, 'Freddie Mac'),
+  (4, 'Farmer Mac'),
+  (5, 'Private securitizer'),
+  (6, 'Commercial bank, savings bank, or savings association'),
+  (71, 'Credit union, mortgage company, or finance company'),
+  (72, 'Life insurance company'),
+  (8, 'Affiliate institution'),
+  (9, 'Other type of purchaser');
+  
+  CREATE TABLE preapproval_lookup (
+      preapproval INT PRIMARY KEY,
+      preapproval_name VARCHAR(100)
+  );
+  
+  INSERT INTO preapproval_lookup VALUES
+  (1, 'Preapproval requested'),
+  (2, 'Preapproval not requested');
+  
+  CREATE TABLE credit_score_type_lookup (
+      applicant_credit_score_type INT PRIMARY KEY,
+      credit_score_name VARCHAR(100)
+  );
+  
+  INSERT INTO credit_score_type_lookup VALUES
+  (1, 'Equifax Beacon 5.0'),
+  (2, 'Experian Fair Isaac'),
+  (3, 'FICO Risk Score Classic 04'),
+  (4, 'FICO Risk Score Classic 98'),
+  (5, 'VantageScore 2.0'),
+  (6, 'VantageScore 3.0'),
+  (7, 'More than one credit scoring model'),
+  (8, 'Other credit scoring model'),
+  (9, 'Not applicable'),
+  (1111, 'Exempt');
