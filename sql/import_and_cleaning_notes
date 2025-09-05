@@ -163,3 +163,10 @@ Steps:
   UPDATE cali_2022 c
   JOIN credit_score_type_lookup cs ON c.applicant_credit_score_type = cs.applicant_credit_score_type
   SET c.credit_score_name = cs.credit_score_name;
+
+  6. Final cleanup steps
+- Removed rows with county_name IS NULL; ~20k rows deleted
+- Mapped values like applicant sex and age
+- Converted numeric columns stored as text (like debt_to_income_ratio) to NULL if invalid
+- Handled special placeholder values: derived_msa_md = 99999 & applicant_age = 8888/9999 → NULL
+- Created midpoint values for ranges in numeric fields (debt_to_income_ratio, applicant_age)
