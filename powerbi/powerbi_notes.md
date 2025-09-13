@@ -26,4 +26,4 @@ Notes on Usage:
 - Use slicers/filters to navigate by year, county, or applicant demographics
 - Hover on visuals for tooltips (approval rates, counts, etc.)
 
-[Dashboard Screenshot](loan-approval/powerbi/dashboard_screenshot.png)
+[Dashboard Screenshot](dashboard_screenshot.png)
