@@ -1,6 +1,6 @@
-File: cali_2022_pbi.pbix
-
 [Dashboard](dashboard_screenshot.png)
+
+File: [California 2022 Loan Approval Power BI](cali_2022_pbi.pbix)
 
 Data Sources: 
 - cleaned_cali_2022.csv: main dataset
