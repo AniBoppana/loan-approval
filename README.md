@@ -24,12 +24,12 @@
 # Repository Structure
 loan-approval/
 
-│── data/                 # Raw & processed sample datasets and notes
+│── data/ [Raw & processed sample datasets and notes]
 
-│── sql/                  # SQL scripts for cleaning, transformation, exploration
+│── sql/ [SQL scripts for cleaning, transformation, exploration]
 
-│── python_ml/            # Python ML scripts, requirements, and notebooks
+│── python_ml/ [Python ML scripts, requirements, and notebooks]
 
-│── powerbi/              # Power BI .pbix dashboards
+│── powerbi/ [Power BI .pbix dashboards]
 
-│── README.md             # Project overview
+│── README.md [Project overview]
