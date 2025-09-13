@@ -1,6 +1,6 @@
 
 ## U.S. Mortgage Loan Approval: 
-# An end-to-end project analyzing loan approval patterns across the U.S. using Python, SQL, Power BI, and Git.
+# An end-to-end project analyzing loan approval patterns across the U.S. using Python, SQL, Power BI, and Github.
 
 # Goals:
 - Build an organized star schema as the structure for this dataset
@@ -8,7 +8,7 @@
 - Build Power BI Dashboards to visualize trends with regional drillthroughs
 
 # Data Source:
-- HMDA from the Consumer Financial Protection Bureau; 2022
+- HMDA from the Consumer Financial Protection Bureau; California 2022
 
 # Project Roadmap:
 
