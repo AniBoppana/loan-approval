@@ -3,8 +3,8 @@ Dataset: HMDA 2022 (California subset)
 Format: CSV (~320 MB)
 Link: https://ffiec.cfpb.gov/data-browser/data/2022?category=states&items=CA&loan_types=1,2,3&loan_purposes=1,2
 
-[Raw Sample](/../data/raw_sample.numbers)
-[Processed Sample](/../data/processed_sample.numbers)
+[Raw Sample](../data/raw_sample.numbers)
+[Processed Sample](../data/processed_sample.numbers)
 
 Import Method: MySQL (direct import with LOAD DATA LOCAL INFILE)
 Reason: MySQL Workbench Table Import Wizard was too slow for ~800k rows, estimated 2 hour upload time
