@@ -25,3 +25,5 @@ Notes on Usage:
 - Open in Power BI Desktop → refresh if needed
 - Use slicers/filters to navigate by year, county, or applicant demographics
 - Hover on visuals for tooltips (approval rates, counts, etc.)
+
+[Dashboard Screenshot](powerbi/dashboard_screenshot.png)
