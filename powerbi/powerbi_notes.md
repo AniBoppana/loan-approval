@@ -1,8 +1,9 @@
-File: cali_2022_pbi.pbix 
+File: cali_2022_pbi.pbix
+[Dashboard](dashboard_screenshot.png)
 
 Data Sources: 
-- cleaned_cali_2022.csv → main dataset (loan applications, etc.)
-- county_population_cali.csv → reference population data by county
+- cleaned_cali_2022.csv: main dataset
+- county_population_cali.csv: reference population data by county
 
 Data Model:
 - One-to-many relationship between county_name in cleaned_cali_2022 and county_population_cali
@@ -14,16 +15,21 @@ Transformations:
 - Created calculated columns for population-based metrics
 
 Visuals:
-- Card showing county population (drillthrough-enabled)
-- Loan approval trends by county
-- Comparison of approval rates vs. population
+- Bar chart of loan approval rate by county in descending order
+- Small multiples bar chart of interest rate by race and gender
+- Interactive map with county dropdown selection and drillthrough
+- Tooltip for loan amount by purpose (refinancing vs. home purchase)
 
-Drillthrough Pages:
-- Select a county (e.g., Alameda) to drill through and view specific population + loan approval breakdown
+Drillthrough Page:
+- Select a county (e.g., Los Angeles) to drill through and view breakdown with the following:
+  - Scatterplot of loan amount by property value
+  - Card with total population 
+  - Card with number of loans
+  - Loan amount by race donut chart
+  - Filled area chart of interest rate by debt-to-income ratio
+  - Gauge with average county approval rate compared to state approval rate
 
 Notes on Usage:
-- Open in Power BI Desktop → refresh if needed
-- Use slicers/filters to navigate by year, county, or applicant demographics
-- Hover on visuals for tooltips (approval rates, counts, etc.)
-
-[Dashboard Screenshot](dashboard_screenshot.png)
+- Open in Power BI Desktop
+- Click on visuals to sort page by county or applicant demographics
+- Hover on visuals for tooltips and right click for drillthroughs
